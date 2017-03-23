@@ -14,9 +14,7 @@ using XamarinAllianceApp.Models;
 namespace XamarinAllianceApp.Controllers
 {
     public class CharacterService
-    {
-        public const string applicationURL = "http://xamarinalliancebackend.azurewebsites.net";
-       
+    {  
         /// <summary>
         /// Get the list of characters
         /// </summary>
@@ -48,16 +46,21 @@ namespace XamarinAllianceApp.Controllers
             var characters = JsonConvert.DeserializeObject<Character[]>(text);
             return characters;
         }
-       /* private async Task<Character> ReadCharactersFromFile()
+      private async Task<Character> ReadCharactersFromAzure()
         {
-         
-        var  CharacterTable = await  client.GetTable<Character>().ToListAsync();
 
-         
+            string mobileServiceClientUrl = "http://xamarinalliancebackend.azurewebsites.net/tables/character";
+            MobileServiceClient Client = new MobileServiceClient(mobileServiceClientUrl);
+            IMobileServiceTable<Character> CharacterTable = Client.GetTable<Character>();
+            var characters = await CharacterTable.ToListAsync();
 
+            var s = JsonConvert.SerializeObject(characters);
 
+            var character = JsonConvert.DeserializeObject<Character>(s);
+
+            return character;
         }
-   */   
+      
     }
 }
 

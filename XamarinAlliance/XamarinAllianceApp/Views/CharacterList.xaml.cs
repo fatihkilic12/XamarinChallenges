@@ -72,7 +72,7 @@ namespace XamarinAllianceApp.Views
         {
             using (var scope = new ActivityIndicatorScope(syncIndicator, showActivityIndicator))
             {
-               characterList.ItemsSource = await service.GetCharactersAsync();
+                characterList.ItemsSource = await service.GetCharactersAsync();
             }
         }
        
