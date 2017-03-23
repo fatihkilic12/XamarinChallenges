@@ -13,8 +13,7 @@ namespace XamarinAllianceApp.Views
         public CharacterList()
         {
             InitializeComponent();
-
-            service = new CharacterService();
+           service = new CharacterService();
 
         }
 

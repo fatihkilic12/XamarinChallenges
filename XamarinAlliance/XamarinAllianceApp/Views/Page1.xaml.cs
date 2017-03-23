@@ -20,6 +20,8 @@ namespace XamarinAllianceApp.Views
             InitializeComponent();
            BindingContext =  this.Item = c;
             Title = c.Name;
+           
+
             
 
         }
@@ -27,5 +29,6 @@ namespace XamarinAllianceApp.Views
         {
             await Navigation.PopAsync();
         }
+       
     }
 }

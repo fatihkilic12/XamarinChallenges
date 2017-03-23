@@ -1,8 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using Android.Util;
+using Microsoft.WindowsAzure.MobileServices;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using XamarinAllianceApp.Helpers;
@@ -12,12 +15,16 @@ namespace XamarinAllianceApp.Controllers
 {
     public class CharacterService
     {
+        public const string applicationURL = "http://xamarinalliancebackend.azurewebsites.net";
+       
         /// <summary>
         /// Get the list of characters
         /// </summary>
         /// <returns>ObservableCollection of Character objects</returns>
-        public async Task<ObservableCollection<Character>> GetCharactersAsync()
+        /// public static Page GetMainPage()
+    public async Task<ObservableCollection<Character>> GetCharactersAsync()
         {
+           
             var characters = await ReadCharactersFromFile();
             return new ObservableCollection<Character>(characters);
         }
@@ -26,7 +33,7 @@ namespace XamarinAllianceApp.Controllers
         /// Get the list of characters from an embedded JSON file, including their child entities.
         /// </summary>
         /// <returns>Array of Character objects</returns>
-        private async Task<Character[]> ReadCharactersFromFile()
+       private async Task<Character[]> ReadCharactersFromFile()
         {
             var assembly = typeof(CharacterService).GetTypeInfo().Assembly;
             Stream stream = assembly.GetManifestResourceStream(Constants.CharactersFilename);
@@ -36,9 +43,21 @@ namespace XamarinAllianceApp.Controllers
             {
                 text = await reader.ReadToEndAsync();
             }
+         
 
             var characters = JsonConvert.DeserializeObject<Character[]>(text);
             return characters;
         }
+       /* private async Task<Character> ReadCharactersFromFile()
+        {
+         
+        var  CharacterTable = await  client.GetTable<Character>().ToListAsync();
+
+         
+
+
+        }
+   */   
     }
 }
+

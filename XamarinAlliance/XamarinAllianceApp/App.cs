@@ -1,16 +1,16 @@
-﻿using System;
-
+﻿
+using Microsoft.WindowsAzure.MobileServices;
 using Xamarin.Forms;
 using XamarinAllianceApp.Views;
 
 namespace XamarinAllianceApp
 {
-	public class App : Application
+    public class App : Application
 	{
 		public App ()
 		{
-			// The root page of your application
-			MainPage = new NavigationPage(new CharacterList());
+            // The root page of your application
+            MainPage = new NavigationPage(new CharacterList());
 		}
 
 		protected override void OnStart ()

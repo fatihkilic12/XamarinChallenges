@@ -11,6 +11,7 @@ namespace XamarinAllianceApp.Models
         string biography;
         string gender;
         float height;
+        string imageUrl;
         string databankUrl;
         ICollection<Weapon> weapons;
         ICollection<Movie> appearances;
@@ -62,6 +63,13 @@ namespace XamarinAllianceApp.Models
         {
             get { return weapons; }
             set { weapons = value; }
+        }
+
+        [JsonProperty(PropertyName = "imageUrl")]
+        public string ImageUrl
+        {
+            get { return imageUrl; }
+            set { imageUrl = value; }
         }
 
         [JsonProperty(PropertyName = "appearances")]

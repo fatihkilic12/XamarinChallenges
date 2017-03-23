@@ -15,9 +15,8 @@ namespace XamarinAllianceApp.Droid
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
-			// Initialize Xamarin Forms
-			global::Xamarin.Forms.Forms.Init (this, bundle);
+          // Initialize Xamarin Forms
+            global::Xamarin.Forms.Forms.Init (this, bundle);
 
 			// Load the main application
 			LoadApplication (new App ());
